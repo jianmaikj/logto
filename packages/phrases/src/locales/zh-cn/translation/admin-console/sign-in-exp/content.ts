@@ -30,6 +30,12 @@ const content = {
     custom_copyright: '自定义版权信息',
     custom_copyright_placeholder: '© 2025 您的公司名称',
   },
+  custom_content: {
+    title: '自定义内容',
+    description: '自定义登录页面显示的内容，如版权信息。',
+    custom_copyright: '自定义版权信息',
+    custom_copyright_placeholder: '© 2025 您的公司名称',
+  },
   support: {
     title: '支持',
     subtitle: '在错误页面上显示你的支持渠道，以便快速用户协助。',
