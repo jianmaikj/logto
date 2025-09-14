@@ -13,6 +13,8 @@ const generateLightColorLibrary = (primaryColor: color) => ({
   [`--color-overlay-brand-focused`]: primaryColor.alpha(0.16).string(),
   [`--color-overlay-brand-hover`]: primaryColor.alpha(0.08).string(),
   [`--color-overlay-brand-pressed`]: primaryColor.alpha(0.12).string(),
+  // Dynamic background colors based on brand color
+  [`--color-bg-float-base`]: absoluteLighten(primaryColor, 45).alpha(0.8).string(),
 });
 
 const generateDarkColorLibrary = (primaryColor: color) => ({
@@ -23,6 +25,10 @@ const generateDarkColorLibrary = (primaryColor: color) => ({
   [`--color-overlay-brand-focused`]: absoluteLighten(primaryColor, 30).rgb().alpha(0.16).string(),
   [`--color-overlay-brand-hover`]: absoluteLighten(primaryColor, 30).rgb().alpha(0.08).string(),
   [`--color-overlay-brand-pressed`]: absoluteLighten(primaryColor, 30).rgb().alpha(0.12).string(),
+  // Dynamic background colors based on brand color for dark theme
+  [`--color-surface-2`]: `linear-gradient(0deg, ${absoluteLighten(primaryColor, 30).alpha(0.08).string()}, ${absoluteLighten(primaryColor, 30).alpha(0.08).string()}), linear-gradient(0deg, rgba(196, 199, 199, 2%), rgba(196, 199, 199, 2%)), #191c1d`,
+  [`--color-surface-3`]: `linear-gradient(0deg, ${absoluteLighten(primaryColor, 30).alpha(0.11).string()}, ${absoluteLighten(primaryColor, 30).alpha(0.11).string()}), linear-gradient(0deg, rgba(196, 199, 199, 2%), rgba(196, 199, 199, 2%)), #191c1d`,
+  [`--color-surface-4`]: `linear-gradient(0deg, ${absoluteLighten(primaryColor, 30).alpha(0.14).string()}, ${absoluteLighten(primaryColor, 30).alpha(0.14).string()}), linear-gradient(0deg, rgba(196, 199, 199, 2%), rgba(196, 199, 199, 2%)), #191c1d`,
 });
 
 const useColorTheme = () => {

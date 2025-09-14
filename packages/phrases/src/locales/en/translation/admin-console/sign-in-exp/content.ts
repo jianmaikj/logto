@@ -33,6 +33,12 @@ const content = {
     support_website: 'Support website',
     support_website_placeholder: 'https://your.website/support',
   },
+  custom_content: {
+    title: 'CUSTOM CONTENT',
+    subtitle: 'Customize footer content and branding elements in the sign-in experience.',
+    custom_copyright: 'Custom copyright text',
+    custom_copyright_placeholder: '© 2025 Your Company Name',
+  },
   manage_language: {
     title: 'Manage language',
     subtitle:

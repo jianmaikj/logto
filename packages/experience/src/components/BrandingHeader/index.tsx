@@ -13,6 +13,8 @@ export type Props = {
   readonly thirdPartyLogo?: Nullable<string>;
   readonly headline?: TFuncKey;
   readonly headlineInterpolation?: Record<string, unknown>;
+  /** Optional literal headline text to override i18n key */
+  readonly headlineText?: string;
 };
 
 const BrandingHeader = ({
@@ -21,6 +23,7 @@ const BrandingHeader = ({
   headline,
   headlineInterpolation,
   className,
+  headlineText,
 }: Props) => {
   const shouldShowLogo = Boolean(thirdPartyLogo ?? logo);
   const shouldConnectSvg = Boolean(thirdPartyLogo && logo);
@@ -37,9 +40,13 @@ const BrandingHeader = ({
         </div>
       )}
 
-      {headline && (
+      {(headlineText || headline) && (
         <div className={styles.headline}>
-          <DynamicT forKey={headline} interpolation={headlineInterpolation} />
+          {headlineText ? (
+            headlineText
+          ) : (
+            <DynamicT forKey={headline} interpolation={headlineInterpolation} />
+          )}
         </div>
       )}
     </div>

@@ -102,7 +102,7 @@ const RegisterFooter = () => {
 };
 
 const Register = () => {
-  const { signUpMethods, socialConnectors, signInMode } = useSieMethods();
+  const { signUpMethods, socialConnectors, signInMode, customContent } = useSieMethods();
   const { agreeToTermsPolicy } = useTerms();
 
   if (!signInMode) {
@@ -114,7 +114,10 @@ const Register = () => {
   }
 
   return (
-    <LandingPageLayout title="description.create_your_account">
+    <LandingPageLayout
+      title="description.create_your_account"
+      titleText={customContent?.['headline.register']}
+    >
       <GoogleOneTap context="signup" />
       <SingleSignOnFormModeContextProvider>
         {signUpMethods.length > 0 && (

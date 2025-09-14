@@ -93,7 +93,7 @@ const SignInFooters = () => {
 };
 
 const SignIn = () => {
-  const { signInMethods, socialConnectors, signInMode } = useSieMethods();
+  const { signInMethods, socialConnectors, signInMode, customContent } = useSieMethods();
   const { agreeToTermsPolicy } = useTerms();
   const [params] = useSearchParams();
 
@@ -115,7 +115,10 @@ const SignIn = () => {
   }
 
   return (
-    <LandingPageLayout title="description.sign_in_to_your_account">
+    <LandingPageLayout
+      title="description.sign_in_to_your_account"
+      titleText={customContent?.['headline.sign_in']}
+    > 
       <GoogleOneTap context="signin" />
       <SingleSignOnFormModeContextProvider>
         <Main signInMethods={signInMethods} socialConnectors={socialConnectors} />

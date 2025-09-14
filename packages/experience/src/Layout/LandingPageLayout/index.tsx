@@ -19,10 +19,12 @@ type Props = {
   readonly children: ReactNode;
   readonly title: TFuncKey;
   readonly titleInterpolation?: Record<string, unknown>;
+  /** Optional literal title text to override i18n key */
+  readonly titleText?: string;
   readonly thirdPartyBranding?: ThirdPartyBranding;
 };
 
-const LandingPageLayout = ({ children, title, titleInterpolation, thirdPartyBranding }: Props) => {
+const LandingPageLayout = ({ children, title, titleInterpolation, titleText, thirdPartyBranding }: Props) => {
   const { experienceSettings, theme } = useContext(PageContext);
 
   if (!experienceSettings) {
@@ -39,6 +41,7 @@ const LandingPageLayout = ({ children, title, titleInterpolation, thirdPartyBran
       <BrandingHeader
         className={classNames(styles.header, layoutClassNames.brandingHeader)}
         headline={title}
+        headlineText={titleText}
         headlineInterpolation={titleInterpolation}
         logo={getBrandingLogoUrl({ theme, branding, isDarkModeEnabled })}
         thirdPartyLogo={

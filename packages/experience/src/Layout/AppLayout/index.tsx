@@ -13,7 +13,9 @@ import styles from './index.module.scss';
 const AppLayout = () => {
   const { experienceSettings, theme } = useContext(PageContext);
   const { isMobile } = usePlatform();
-  const hideLogtoBranding = experienceSettings?.hideLogtoBranding === true;
+
+  // 简化显示逻辑：基于环境变量决定是否显示签名
+  const showSignature = process.env.LOGTO_SHOW_POWERED_BY !== 'false' || process.env.LOGTO_CUSTOM_COPYRIGHT;
 
   return (
     <div className={styles.viewBox}>
@@ -21,10 +23,9 @@ const AppLayout = () => {
         {!isMobile && <CustomContent className={layoutClassNames.customContent} />}
         <main className={classNames(styles.main, layoutClassNames.mainContent)}>
           <Outlet />
-          {!hideLogtoBranding && (
-            <LogtoSignature
-              className={classNames(styles.signature, layoutClassNames.signature)}
-              theme={theme}
+          {showSignature && (
+            <LogtoSignature 
+              className={classNames(styles.signature, layoutClassNames.signature)} 
             />
           )}
         </main>

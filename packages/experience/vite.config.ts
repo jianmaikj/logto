@@ -33,10 +33,11 @@ const buildConfig = (mode: string): UserConfig => ({
 
     // Experience package does not support ESM unit test yet, can not use import.meta.env
     // so we need to define the environment variables here.
-    'process.env': {
-      NODE_ENV: process.env.NODE_ENV,
-      DEV_FEATURES_ENABLED: process.env.DEV_FEATURES_ENABLED,
-    },
+    'process.env.NODE_ENV': `"${process.env.NODE_ENV ?? 'development'}"`,
+    'process.env.DEV_FEATURES_ENABLED': `"${process.env.DEV_FEATURES_ENABLED ?? 'false'}"`,
+    'process.env.LOGTO_CUSTOM_COPYRIGHT': `"${process.env.LOGTO_CUSTOM_COPYRIGHT ?? ''}"`,
+    'process.env.LOGTO_CUSTOM_BRAND_URL': `"${process.env.LOGTO_CUSTOM_BRAND_URL ?? ''}"`,
+    'process.env.LOGTO_SHOW_POWERED_BY': `"${process.env.LOGTO_SHOW_POWERED_BY ?? 'true'}"`,
   },
   build: {
     // Use the same browserslist configuration as in README.md.
